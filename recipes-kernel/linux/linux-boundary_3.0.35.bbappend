@@ -9,6 +9,10 @@ MACHINE_KERNEL_PR = "r0"
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI +=  " file://defconfig \
+              file://0001-dres0280-supprt-files-copied-from-nitrogen6x.patch \
+              file://0002-dres0280-supprt-files-copied-from-nitrogen6x.patch \
+              file://0003-dres0280-pad-definitions-copied-from-nitrogen6x-and-.patch \
+              file://0004-rootfs-is-loaded-from-dev-mmcblk0p1-but-freezes-in-s.patch \
 	    "
 # The parameter 'type' in a git-SRC_URI is a workaround. The error is in file
 # openembedded-core/meta/classes/kernel-yocto.bbclass in function find_kernel_feature_dirs.
