@@ -16,7 +16,5 @@ S = "${WORKDIR}/git"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PROVIDER_u-boot = "u-boot-himx"
-
-UBOOT_MACHINE = "dres0280_rev_a_config"
+PROVIDES += "u-boot"
 
