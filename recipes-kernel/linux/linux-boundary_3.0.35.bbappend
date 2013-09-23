@@ -1,6 +1,6 @@
 # Use latest yocto kernel
 
-COMPATIBLE_MACHINE = "(dres0280_rev_a|himx)"
+COMPATIBLE_MACHINE = "(dres0280_rev_a|himx|nitrogen6x|imx6qsabrelite)"
 
 DEPENDS += " lzop-native test-harness-native "
 RDEPENDS_${PN} += " mtd-utils gawk busybox bootconfig "
