@@ -12,9 +12,8 @@ SRC_URI +=  " file://defconfig \
               file://board-mx6_dres0280.c \
               file://pads-mx6_dres0280.h \
               file://dres0280_defconfig \
-              file://0001-dres0280-supprt-files-copied-from-nitrogen6x.patch \
-              file://0004-rootfs-is-loaded-from-dev-mmcblk0p1-but-freezes-in-s.patch \
-	    "
+              file://0001-DRES0280-add-board-DRES0280.patch \
+            "
 
 # The parameter 'type' in a git-SRC_URI is a workaround. The error is in file
 # openembedded-core/meta/classes/kernel-yocto.bbclass in function find_kernel_feature_dirs.

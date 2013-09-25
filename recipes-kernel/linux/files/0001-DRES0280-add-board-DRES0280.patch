@@ -1,0 +1,87 @@
+From 1a7283214a55fbeef8f3c8e4fe592776087d211a Mon Sep 17 00:00:00 2001
+From: Eik Binschek <binschek@dresearch-fe.de>
+Date: Wed, 25 Sep 2013 12:12:04 +0200
+Subject: [PATCH] DRES0280: add board DRES0280
+
+add board DRES0280
+
+Signed-off-by: Eik Binschek <binschek@dresearch-fe.de>
+---
+ arch/arm/mach-mx6/Kconfig  | 37 +++++++++++++++++++++++++++++++++++++
+ arch/arm/mach-mx6/Makefile |  1 +
+ arch/arm/tools/mach-types  |  1 +
+ 3 files changed, 39 insertions(+)
+
+diff --git a/arch/arm/mach-mx6/Kconfig b/arch/arm/mach-mx6/Kconfig
+index d7b275f..64eacd2 100644
+--- a/arch/arm/mach-mx6/Kconfig
++++ b/arch/arm/mach-mx6/Kconfig
+@@ -399,6 +399,43 @@ config MACH_MX6_NITROGEN6X
+ 	  Include support for Nitrogen6X and i.MX 6Quad SABRE Lite platform.
+ 	  This includes specific configurations for the board and its peripherals.
+ 
++config MACH_MX6_DRES0280
++       bool "Support DResearch dres0280"
++       select ARCH_MX6Q
++       select SOC_IMX6Q
++       select IMX_HAVE_PLATFORM_IMX_UART
++       select IMX_HAVE_PLATFORM_DMA
++       select IMX_HAVE_PLATFORM_FEC
++       select IMX_HAVE_PLATFORM_GPMI_NFC
++       select IMX_HAVE_PLATFORM_SDHCI_ESDHC_IMX
++       select IMX_HAVE_PLATFORM_SPI_IMX
++       select IMX_HAVE_PLATFORM_IMX_I2C
++       select IMX_HAVE_PLATFORM_VIV_GPU
++       select IMX_HAVE_PLATFORM_IMX_VPU
++       select IMX_HAVE_PLATFORM_IMX_SSI
++       select IMX_HAVE_PLATFORM_IMX_ANATOP_THERMAL
++       select IMX_HAVE_PLATFORM_FSL_USB2_UDC
++       select IMX_HAVE_PLATFORM_MXC_EHCI
++       select IMX_HAVE_PLATFORM_FSL_OTG
++       select IMX_HAVE_PLATFORM_FSL_USB_WAKEUP
++       select IMX_HAVE_PLATFORM_AHCI
++       select IMX_HAVE_PLATFORM_IMX_OCOTP
++       select IMX_HAVE_PLATFORM_IMX_VIIM
++       select IMX_HAVE_PLATFORM_IMX2_WDT
++       select IMX_HAVE_PLATFORM_IMX_SNVS_RTC
++       select IMX_HAVE_PLATFORM_IMX_PM
++       select IMX_HAVE_PLATFORM_MXC_HDMI
++       select IMX_HAVE_PLATFORM_IMX_ASRC
++       select IMX_HAVE_PLATFORM_FLEXCAN
++       select IMX_HAVE_PLATFORM_IMX_CAAM
++       select IMX_HAVE_PLATFORM_IMX_DVFS
++       select IMX_HAVE_PLATFORM_IMX_MIPI_CSI2
++       select IMX_HAVE_PLATFORM_IMX_PCIE
++       select IMX_HAVE_PLATFORM_PERFMON
++       help
++         Include support for DResearch dres0280 platform.
++         This includes specific configurations for the board and its peripherals.
++
+ config MACH_MX6_UTC
+ 	bool "Support Boundary Devices i.MX6 UTC"
+ 	select ARCH_MX6Q
+diff --git a/arch/arm/mach-mx6/Makefile b/arch/arm/mach-mx6/Makefile
+index e2ec80a..28f7281832 100644
+--- a/arch/arm/mach-mx6/Makefile
++++ b/arch/arm/mach-mx6/Makefile
+@@ -14,6 +14,7 @@ obj-$(CONFIG_MACH_MX6SL_ARM2) += board-mx6sl_arm2.o mx6sl_arm2_pmic_pfuze100.o
+ obj-$(CONFIG_MACH_MX6SL_EVK) += board-mx6sl_evk.o mx6sl_evk_pmic_pfuze100.o
+ obj-$(CONFIG_MACH_MX6Q_SABRELITE) += board-mx6q_sabrelite.o
+ obj-$(CONFIG_MACH_MX6_NITROGEN6X) += board-mx6_nitrogen6x.o
++obj-$(CONFIG_MACH_MX6_DRES0280) += board-mx6_dres0280.o
+ obj-$(CONFIG_MACH_MX6_UTC) += board-mx6_utc.o
+ obj-$(CONFIG_MACH_MX6_S) += board-mx6_s.o
+ obj-$(CONFIG_MACH_MX6_OC) += board-mx6_oc.o
+diff --git a/arch/arm/tools/mach-types b/arch/arm/tools/mach-types
+index 292f2e0..f6c1f18 100644
+--- a/arch/arm/tools/mach-types
++++ b/arch/arm/tools/mach-types
+@@ -1126,4 +1126,5 @@ mx6q_arm2		MACH_MX6Q_ARM2		MX6Q_ARM2		3837
+ mx6sl_arm2		MACH_MX6SL_ARM2		MX6SL_ARM2		4091
+ mx6q_hdmidongle		MACH_MX6Q_HDMIDONGLE    MX6Q_HDMIDONGLE		4284
+ mx6sl_evk		MACH_MX6SL_EVK		MX6SL_EVK		4307
++mx6_dres0280		MACH_MX6_DRES0280	MX6_DRES0280		9999
+ 
+-- 
+1.8.1.4
+
