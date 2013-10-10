@@ -301,19 +301,19 @@ static const struct spi_imx_master spi_data __initconst = {
 #if defined(CONFIG_MTD_M25P80) || defined(CONFIG_MTD_M25P80_MODULE)
 static struct mtd_partition spi_nor_partitions[] = {
 	{
-	 .name = "bootloader",
+	 .name = "u-boot",
 	 .offset = 0,
-	 .size = 768*1024,
+	 .size = 320*1024,
 	},
 	{
-	 .name = "ubparams",
-	 .offset = MTDPART_OFS_APPEND,
-	 .size = 8*1024,
+	 .name = "u-boot env",
+	 .offset = 320*1024,
+	 .size = 64*1024,
 	},
 	{
-	 .name = "unused",
-	 .offset = MTDPART_OFS_APPEND,
-	 .size = MTDPART_SIZ_FULL,
+	 .name = "kernel",
+	 .offset = 384*1024,
+	 .size = 3712*1024,
 	},
 };
 
