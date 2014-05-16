@@ -93,8 +93,11 @@ static iomux_v3_cfg_t MX6NAME(common_pads)[] = {
 	MX6PAD(RGMII_RX_CTL__ENET_RGMII_RX_CTL),
 	MX6PAD(ENET_TX_EN__GPIO_1_28),		/* Micrel RGMII Phy Interrupt */
 
-	/* GPIO1 */
-	//MX6PAD(ENET_RX_ER__GPIO_1_24),		/* J9 - Microphone Detect */
+	/* Jupiter JP2 GPS module control */
+	MX6PAD(EIM_D28__GPIO_3_28),		/* JP2 input ON_OFF */
+	NEW_PAD_CTRL(MX6PAD(EIM_D28__GPIO_3_28), MX6Q_GPIO_16_PAD_CTRL ), 
+	MX6PAD(DISP0_DAT4__GPIO_4_25),		/* JP2 output SYSTEM_ON */
+	NEW_PAD_CTRL(MX6PAD(DISP0_DAT4__GPIO_4_25), MX6Q_GPIO_16_PAD_CTRL ), 
 
 	/* GPIO2 */
 	//MX6PAD(NANDF_D1__GPIO_2_1),	/* J14 - Menu Button */
@@ -205,7 +208,7 @@ static iomux_v3_cfg_t MX6NAME(common_pads)[] = {
 	MX6PAD(EIM_D26__UART2_TXD),
 	MX6PAD(EIM_D27__UART2_RXD),
 
-	/* UART2 to base board */
+	/* UART4 to base board */
 	MX6PAD(KEY_ROW0__UART4_RXD),
 	MX6PAD(KEY_COL0__UART4_TXD),
 

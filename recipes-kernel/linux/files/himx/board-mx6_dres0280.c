@@ -101,6 +101,9 @@
 #define GP_CSI0_PWN		IMX_GPIO_NR(1, 6)
 #define GP_ENET_PHY_INT	IMX_GPIO_NR(1, 28)
 
+#define GP_JP2_SYSTEM_ON	IMX_GPIO_NR(4, 25)
+#define GP_JP2_ON_OFF		IMX_GPIO_NR(3, 28)
+
 #define N6_WL1271_WL_IRQ		IMX_GPIO_NR(6, 14)
 #define N6_WL1271_WL_EN			IMX_GPIO_NR(6, 15)
 #define N6_WL1271_BT_EN			IMX_GPIO_NR(6, 16)
@@ -1015,6 +1018,14 @@ static struct imxi2c_platform_data i2c_data = {
 	.bitrate = 100000,
 };
 
+// Jupiter GPS module 
+// not used, they are now in common gpios
+static struct gpio jf2_gpios[] = {
+	{ GP_CAN1_ERR, GPIOF_DIR_IN, "jf2-system_on" },
+	{ GP_CAN1_EN, GPIOF_OUT_INIT_LOW, "jf2-on-off" },
+};
+
+
 /*!
  * Board specific initialization.
  */
@@ -1026,8 +1037,25 @@ static void __init board_init(void)
 	struct clk *new_parent;
 	int rate;
 
-	IOMUX_SETUP(common_pads);
+	#define GP_JP2_SYSTEM_ON	IMX_GPIO_NR(4, 25)
+#define GP_JP2_ON_OFF		IMX_GPIO_NR(3, 28)
 
+	IOMUX_SETUP(common_pads);
+	
+	// JP2 GPS module control
+	ret = gpio_request(GP_JP2_SYSTEM_ON, "jp2-system_on");
+	if (ret) {
+		pr_err("failed to get GP_JP2_SYSTEM_ON: %d\n", ret);
+	}
+	ret = gpio_request( GP_JP2_ON_OFF, "jp2-on_off");
+	if (ret) {
+		pr_err("failed to get GP_JP2_ON_OFF: %d\n", ret);
+	}
+	gpio_direction_input(GP_JP2_SYSTEM_ON);
+	gpio_export(GP_JP2_SYSTEM_ON, true );
+	gpio_direction_output( GP_JP2_ON_OFF, 0 );
+	gpio_export(GP_JP2_ON_OFF, true );
+	
 #ifdef CONFIG_FEC_1588
 	/* Set GPIO_16 input for IEEE-1588 ts_clk and RMII reference clock
 	 * For MX6 GPR1 bit21 meaning:
