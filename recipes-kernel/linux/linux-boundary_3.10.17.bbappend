@@ -3,8 +3,6 @@ COMPATIBLE_MACHINE = "(himx0280)"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-PRINC := "${@int(PRINC) + 3}"
-
 SRC_URI_append_himx0280 =  " \
 	file://defconfig \
 	file://0001-add-himx0280-board.patch \
