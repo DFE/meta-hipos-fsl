@@ -1,15 +1,15 @@
-From 12b8834c3f11f89bbd7c5ac801b57a16629809d9 Mon Sep 17 00:00:00 2001
+From 1034e815f9a871365bab2b1f9a41727fdb020cce Mon Sep 17 00:00:00 2001
 From: Mario Schuknecht <mario.schuknecht@dresearch-fe.de>
-Date: Fri, 27 Jun 2014 12:46:26 +0200
+Date: Fri, 27 Jun 2014 16:17:03 +0200
 Subject: [PATCH] Add support for board himx0280
 
 Signed-off-by: Mario Schuknecht <mario.schuknecht@dresearch-fe.de>
 ---
  arch/arm/boot/dts/Makefile              |    1 +
  arch/arm/boot/dts/imx6q-himx0280.dts    |   47 +++
- arch/arm/boot/dts/imx6qdl-himx0280.dtsi |  598 +++++++++++++++++++++++++++++++
+ arch/arm/boot/dts/imx6qdl-himx0280.dtsi |  596 +++++++++++++++++++++++++++++++
  arch/arm/tools/mach-types               |    3 +
- 4 files changed, 649 insertions(+)
+ 4 files changed, 647 insertions(+)
  create mode 100644 arch/arm/boot/dts/imx6q-himx0280.dts
  create mode 100644 arch/arm/boot/dts/imx6qdl-himx0280.dtsi
 
@@ -80,10 +80,10 @@ index 0000000..0f81056
 +};
 diff --git a/arch/arm/boot/dts/imx6qdl-himx0280.dtsi b/arch/arm/boot/dts/imx6qdl-himx0280.dtsi
 new file mode 100644
-index 0000000..348cc24
+index 0000000..b674f48
 --- /dev/null
 +++ b/arch/arm/boot/dts/imx6qdl-himx0280.dtsi
-@@ -0,0 +1,598 @@
+@@ -0,0 +1,596 @@
 +/*
 + * Copyright 2013 Boundary Devices
 + * Copyright 2012 Freescale Semiconductor, Inc.
@@ -382,12 +382,10 @@ index 0000000..348cc24
 +		partition@0 {
 +			label = "U-Boot";
 +			reg = <0x0 0x50000>;
-+			read-only;
 +		};
 +		partition@50000 {
 +			label = "env";
 +			reg = <0x50000 0x10000>;
-+			read-only;
 +		};
 +		partition@60000 {
 +			label = "Kernel";
